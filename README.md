@@ -27,14 +27,14 @@ $ gem install rails_helper_anywhere
 To use _Rails Helpers_ just place them as class methods on the class Helper.
 
 ```ruby
-# Examples of helpers to use
+# Examples of some helpers
 
 Helper.link_to('Home', '/') #=> '<a href="/">home page</a>'
 Helper.pins_path #=> '/pins'
 Helper.method_from_custom_helpers #=> 'return from custom method in ApplicationHelper module'
 ```
 
-The __Helper Class__ is most useful in custom classes or custom tests. Instead of including the helper modules that you need, just use the class methods.
+The __Helper Class__ is most useful in custom classes or custom tests. Instead of including the helper modules that you need, just use the Helper class methods.
 
 ```ruby
 class MyCustomClass
