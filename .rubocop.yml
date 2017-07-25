@@ -1,0 +1,10 @@
+AllCops:
+  Exclude:
+    - spec/**/*
+    - lib/rails_helper_anywhere/version.rb
+
+Metrics/LineLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false

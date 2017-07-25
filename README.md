@@ -1,8 +1,6 @@
-# RailsHelperAnywhere
+# Rails Helper Anywhere
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rails_helper_anywhere`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+_Rails Helper Anywhere_ allows you to access ALL Ruby On Rails helpers. All methods are placed on the class Helper as class methods.
 
 ## Installation
 
@@ -14,28 +12,51 @@ gem 'rails_helper_anywhere'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install rails_helper_anywhere
+```
+$ gem install rails_helper_anywhere
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+To use _Rails Helpers_ just place them as class methods on the class Helper.
 
-## Development
+```ruby
+# Examples of helpers to use
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Helper.link_to('Home', '/') #=> '<a href="/">home page</a>'
+Helper.pins_path #=> '/pins'
+Helper.method_from_custom_helpers #=> 'return from custom method in ApplicationHelper module'
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+The __Helper Class__ is most useful in custom classes or custom tests. Instead of including the helper modules that you need, just use the class methods.
+
+```ruby
+class MyCustomClass
+  def my_method_root_path
+    Helper.root_path
+  end
+end
+
+RSpec.describe MyCustomClass do
+  describe '#my_method_root_path' do
+    it 'returns root path' do
+      expect(Helper.root_path).to eq(MyCustomClass.new.my_method_root_path)
+    end
+  end
+end
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rails_helper_anywhere. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/jwipeout/rails_helper_anywhere. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
